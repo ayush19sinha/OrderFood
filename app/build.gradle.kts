@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "my.android.orderfood"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "my.android.orderfood"
@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation (libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
