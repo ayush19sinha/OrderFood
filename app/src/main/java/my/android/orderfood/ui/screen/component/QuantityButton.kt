@@ -68,8 +68,61 @@ fun QuantityButton(
     }
 }
 
+@Composable
+fun GreenQuantityButton(
+    quantity: Int,
+    onIncrement: () -> Unit,
+    onDecrement: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .background(
+                color = Color(0xFFCAECD5),
+                shape = RoundedCornerShape(8.dp)
+            )
+            .height(36.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(
+            onClick = onDecrement,
+            modifier = Modifier.size(26.dp)
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_remove),
+                contentDescription = "Decrease quantity",
+                tint = Color(0xFF43946C)
+            )
+        }
+
+        Text(
+            text = quantity.toString(),
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
+
+        IconButton(
+            onClick = onIncrement,
+            modifier = Modifier.size(26.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Increase quantity",
+                tint = Color(0xFF43946C)
+            )
+
+        }
+    }
+}
+
+
 @Preview
 @Composable
 private fun QuantityButtonPreview() {
     QuantityButton(quantity = 4, onDecrement = {}, onIncrement = {})
+}
+
+@Preview
+@Composable
+private fun GreenQuantityButtonPreview() {
+    GreenQuantityButton(quantity = 4, onDecrement = {}, onIncrement = {})
 }

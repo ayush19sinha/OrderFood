@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Add
@@ -46,6 +47,7 @@ import coil3.compose.AsyncImage
 import my.android.orderfood.R
 import my.android.orderfood.data.model.Cart
 import my.android.orderfood.data.model.CartItem
+import my.android.orderfood.ui.screen.component.GreenQuantityButton
 import my.android.orderfood.viewmodel.FoodOrderViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -157,16 +159,28 @@ fun CartScreenContent(modifier: Modifier = Modifier, cart: Cart, onNavigateBack:
                                 color = Color.Gray
                             )
                         }
-                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Text(
-                                text = "₹${String.format("%.2f", cart.total)}",
-                                textDecoration = TextDecoration.LineThrough
-                            )
+                        Column {
+                            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                Text(
+                                    text = "₹${String.format("%.2f", cart.total)}",
+                                    textDecoration = TextDecoration.LineThrough
+                                )
 
-                            Text(
-                                text = "₹${String.format("%.2f", cart.discountedTotal)}",
-                                fontWeight = FontWeight.Bold
-                            )
+                                Text(
+                                    text = "₹${String.format("%.2f", cart.discountedTotal)}",
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                            Row(
+                                modifier = Modifier
+                                    .padding(2.dp)
+                                    .background(Color(0xFFCAECD5), RoundedCornerShape(8.dp))
+                            ) {
+                                Text(
+                                    "SAVING ₹${cart.total - cart.discountedTotal}",
+                                    color = Color(0xFF43946C)
+                                )
+                            }
                         }
                     }
                 }
@@ -230,7 +244,8 @@ fun CartItemRow(cartItem: CartItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         AsyncImage(
             model = R.drawable.non_veg_icon,
@@ -245,7 +260,6 @@ fun CartItemRow(cartItem: CartItem) {
                 .weight(1f)
                 .padding(horizontal = 12.dp)
         ) {
-
             Text(
                 text = menuItem.name,
                 style = MaterialTheme.typography.titleMedium,
@@ -253,14 +267,17 @@ fun CartItemRow(cartItem: CartItem) {
             )
 
             Row {
-                Text("Customise Selection")
-                Icon(Icons.Default.ArrowDropDown, contentDescription = null)
+                Text("Customise Selection", color = Color.Gray)
+                Icon(Icons.Default.ArrowDropDown, contentDescription = null, tint = Color.Gray)
             }
-
-
-            Spacer(modifier = Modifier.height(4.dp))
-
         }
+
+        GreenQuantityButton(
+            quantity = cartItem.quantity,
+            onIncrement = { },
+            onDecrement = { })
+        Spacer(Modifier.width(18.dp))
+
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
@@ -279,14 +296,19 @@ fun CartItemRow(cartItem: CartItem) {
 }
 
 @Composable
+fun DeliveryInformation() {
+    
+}
+
+@Composable
 fun AddItemButton() {
-    Row (
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically
-    ){
+    ) {
         Icon(Icons.Default.Add, contentDescription = null, tint = Color(0xFF43946C))
-        Text("Add Item", color = Color(0xFF43946C))
+        Text("Add items", color = Color(0xFF43946C))
     }
 }

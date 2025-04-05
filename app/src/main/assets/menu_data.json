@@ -10,13 +10,40 @@
       "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"
     },
     {
-      "id": "ttl2",
-      "name": "Paneer Tikka",
-      "description": "Tandoor-grilled cottage cheese marinated in yogurt and traditional spices",
-      "price": 249.00,
-      "discountedPrice": 229.00,
+      "id": "ttl3",
+      "name": "Masala Dosa",
+      "description": "Crispy rice crepe filled with spiced potato filling, served with chutney and sambar",
+      "price": 179.00,
+      "discountedPrice": 159.00,
+      "servingSize": "Serves 1",
+      "imageUrl": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976"
+    },
+    {
+      "id": "ttl4",
+      "name": "Chicken Biryani",
+      "description": "Fragrant basmati rice layered with marinated chicken and aromatic spices",
+      "price": 349.00,
+      "discountedPrice": 299.00,
+      "servingSize": "Serves 2",
+      "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8"
+    },
+    {
+      "id": "ttl5",
+      "name": "Dal Makhani",
+      "description": "Creamy black lentils slow-cooked with butter, cream and mild spices",
+      "price": 199.00,
+      "discountedPrice": 179.00,
       "servingSize": "Serves 1-2",
-      "imageUrl": "https://unsplash.com/photos/a-white-plate-topped-with-food-next-to-a-fork-5fn0mTdDkGY"
+      "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d"
+    },
+    {
+      "id": "ttl1",
+      "name": "Butter Chicken",
+      "description": "Tender chicken in a rich, creamy tomato sauce with butter and aromatic spices",
+      "price": 299.00,
+      "discountedPrice": 249.00,
+      "servingSize": "Serves 2",
+      "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"
     },
     {
       "id": "ttl3",
