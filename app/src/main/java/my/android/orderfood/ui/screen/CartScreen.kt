@@ -72,13 +72,13 @@ fun CartScreen(
                 }
             })
     }) { innerPadding ->
-        CartScreenContent(modifier = Modifier.padding(innerPadding), cart, onNavigateBack)
+        CartScreenContent(modifier = Modifier.padding(innerPadding), cart, viewModel, onNavigateBack)
     }
 
 }
 
 @Composable
-fun CartScreenContent(modifier: Modifier = Modifier, cart: Cart, onNavigateBack: () -> Unit) {
+fun CartScreenContent(modifier: Modifier = Modifier, cart: Cart, viewModel: FoodOrderViewModel, onNavigateBack: () -> Unit) {
     if (cart.items.isEmpty()) {
         Box(
             modifier = modifier
@@ -133,7 +133,7 @@ fun CartScreenContent(modifier: Modifier = Modifier, cart: Cart, onNavigateBack:
                 }
 
                 items(cart.items) { cartItem ->
-                    CartItemRow(cartItem = cartItem)
+                    CartItemRow(cartItem = cartItem, viewModel = viewModel)
                 }
                 item { AddItemButton() }
 
@@ -244,7 +244,7 @@ private fun DeliveryBanner() {
 
 
 @Composable
-fun CartItemRow(cartItem: CartItem) {
+fun CartItemRow(cartItem: CartItem, viewModel: FoodOrderViewModel) {
     val menuItem = cartItem.menuItem
 
     Row(
@@ -281,8 +281,8 @@ fun CartItemRow(cartItem: CartItem) {
 
         GreenQuantityButton(
             quantity = cartItem.quantity,
-            onIncrement = { },
-            onDecrement = { }
+            onIncrement = { viewModel.addToCart(menuItem)},
+            onDecrement = { viewModel.removeFromCart(menuItem)}
         )
         Spacer(Modifier.width(18.dp))
 
