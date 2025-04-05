@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import my.android.orderfood.ui.screen.CartScreen
 import my.android.orderfood.ui.screen.HomeScreen
 import my.android.orderfood.viewmodel.FoodOrderViewModel
 
@@ -15,6 +16,12 @@ fun AppNavigation(viewModel: FoodOrderViewModel) {
             HomeScreen(
                 viewModel = viewModel,
                 onNavigateToCart = { navController.navigate("cart") }
+            )
+        }
+        composable("cart") {
+            CartScreen(
+                viewModel = viewModel,
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }

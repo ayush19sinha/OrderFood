@@ -8,7 +8,7 @@ data class MenuItem(
     val name: String,
     val description: String,
     val price: Double,
-    val discountedPrice: Double? = null,
+    val discountedPrice: Double,
     val servingSize: String,
     val imageUrl: String
 )
@@ -18,6 +18,9 @@ data class Cart(
 ) {
     val total: Double
         get() = items.sumOf { it.menuItem.price * it.quantity }
+
+    val discountedTotal: Double
+        get() = items.sumOf { it.menuItem.discountedPrice * it.quantity }
 }
 
 data class CartItem(
