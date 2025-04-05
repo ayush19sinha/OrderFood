@@ -17,9 +17,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -41,6 +43,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -133,6 +136,10 @@ fun CartScreenContent(modifier: Modifier = Modifier, cart: Cart, onNavigateBack:
                     CartItemRow(cartItem = cartItem)
                 }
                 item { AddItemButton() }
+
+                item { Spacer(Modifier.height(12.dp)) }
+
+                item { DeliveryInformation() }
 
                 item {
                     HorizontalDivider(
@@ -297,7 +304,41 @@ fun CartItemRow(cartItem: CartItem) {
 
 @Composable
 fun DeliveryInformation() {
-    
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Outlined.Home,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    text = "Delivery at Home",
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = "Expand",
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+        Text(
+            "Home 3rd Floor, Rock Castle, Ranchi, Jharkhand, India",
+            maxLines = 1,
+            color = Color.Gray,
+            overflow = TextOverflow.Ellipsis
+        )
+    }
 }
 
 @Composable
