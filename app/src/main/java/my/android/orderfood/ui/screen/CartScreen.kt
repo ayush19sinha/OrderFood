@@ -282,7 +282,8 @@ fun CartItemRow(cartItem: CartItem) {
         GreenQuantityButton(
             quantity = cartItem.quantity,
             onIncrement = { },
-            onDecrement = { })
+            onDecrement = { }
+        )
         Spacer(Modifier.width(18.dp))
 
 
