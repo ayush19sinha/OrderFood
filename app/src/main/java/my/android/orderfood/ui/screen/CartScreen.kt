@@ -351,6 +351,7 @@ fun AddItemButton() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(Icons.Default.Add, contentDescription = null, tint = Color(0xFF43946C))
+        Spacer(Modifier.width(6.dp))
         Text("Add items", color = Color(0xFF43946C))
     }
 }
