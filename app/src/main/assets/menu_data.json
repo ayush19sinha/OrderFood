@@ -1,0 +1,123 @@
+{
+  "triedTastedLoved": [
+    {
+      "id": "ttl1",
+      "name": "Butter Chicken",
+      "description": "Tender chicken in a rich, creamy tomato sauce with butter and aromatic spices",
+      "price": 299.00,
+      "discountedPrice": 249.00,
+      "servingSize": "Serves 2",
+      "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"
+    },
+    {
+      "id": "ttl2",
+      "name": "Paneer Tikka",
+      "description": "Tandoor-grilled cottage cheese marinated in yogurt and traditional spices",
+      "price": 249.00,
+      "discountedPrice": 229.00,
+      "servingSize": "Serves 1-2",
+      "imageUrl": "https://unsplash.com/photos/a-white-plate-topped-with-food-next-to-a-fork-5fn0mTdDkGY"
+    },
+    {
+      "id": "ttl3",
+      "name": "Masala Dosa",
+      "description": "Crispy rice crepe filled with spiced potato filling, served with chutney and sambar",
+      "price": 179.00,
+      "discountedPrice": 159.00,
+      "servingSize": "Serves 1",
+      "imageUrl": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976"
+    },
+    {
+      "id": "ttl4",
+      "name": "Chicken Biryani",
+      "description": "Fragrant basmati rice layered with marinated chicken and aromatic spices",
+      "price": 349.00,
+      "discountedPrice": 299.00,
+      "servingSize": "Serves 2",
+      "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8"
+    },
+    {
+      "id": "ttl5",
+      "name": "Dal Makhani",
+      "description": "Creamy black lentils slow-cooked with butter, cream and mild spices",
+      "price": 199.00,
+      "discountedPrice": 179.00,
+      "servingSize": "Serves 1-2",
+      "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d"
+    }
+  ],
+  "lookingForMore": [
+    {
+      "id": "lfm1",
+      "name": "Chole Bhature",
+      "description": "Spicy chickpea curry served with deep-fried bread",
+      "price": 199.00,
+      "discountedPrice": 179.00,
+      "servingSize": "Serves 1",
+      "imageUrl": "https://images.unsplash.com/photo-1626132647523-66d3a8c257b4"
+    },
+    {
+      "id": "lfm2",
+      "name": "Tandoori Roti",
+      "description": "Whole wheat flatbread baked in a tandoor",
+      "price": 35.00,
+      "discountedPrice": 20.00,
+      "servingSize": "1 piece",
+      "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641"
+    },
+    {
+      "id": "lfm3",
+      "name": "Malai Kofta",
+      "description": "Soft paneer and vegetable dumplings in a creamy sauce",
+      "price": 249.00,
+      "discountedPrice": 229.00,
+      "servingSize": "Serves 1-2",
+      "imageUrl": "https://images.unsplash.com/photo-1645149037246-a8d880680efd"
+    },
+    {
+      "id": "lfm4",
+      "name": "Pav Bhaji",
+      "description": "Spiced vegetable mash served with buttered bread rolls",
+      "price": 159.00,
+      "discountedPrice": 139.00,
+      "servingSize": "Serves 1",
+      "imageUrl": "https://images.unsplash.com/photo-1606491956689-2ea866880c84"
+    },
+    {
+      "id": "lfm5",
+      "name": "Samosas",
+      "description": "Crispy pastry filled with spiced potatoes and peas",
+      "price": 99.00,
+      "discountedPrice": 89.00,
+      "servingSize": "2 pieces",
+      "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950"
+    },
+    {
+      "id": "lfm6",
+      "name": "Hyderabadi Veg Biryani",
+      "description": "Fragrant rice dish with vegetables and aromatic spices",
+      "price": 249.00,
+      "discountedPrice": 219.00,
+      "servingSize": "Serves 2",
+      "imageUrl": "https://images.unsplash.com/photo-1599043513900-ed6fe01d3833"
+    },
+    {
+      "id": "lfm7",
+      "name": "Gulab Jamun",
+      "description": "Deep-fried milk solids soaked in sugar syrup",
+      "price": 129.00,
+      "discountedPrice": 99.00,
+      "servingSize": "3 pieces",
+      "imageUrl": "https://images.unsplash.com/photo-1606850780554-b55ea4dd0b70"
+    },
+    {
+      "id": "lfm8",
+      "name": "Matar Paneer",
+      "description": "Cottage cheese and green peas in a tomato-based gravy",
+      "price": 229.00,
+      "discountedPrice": 199.00,
+      "servingSize": "Serves 1",
+      "imageUrl": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7"
+    }
+  ]
+}
