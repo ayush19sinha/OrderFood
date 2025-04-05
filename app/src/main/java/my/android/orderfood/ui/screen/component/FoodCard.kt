@@ -31,14 +31,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import my.android.orderfood.R
+import my.android.orderfood.data.model.MenuItem
 
 @Composable
-fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
+fun TriedTastedFoodCard(
+    modifier: Modifier = Modifier, menuItem: MenuItem, quantity: Int, onAddToCart: () -> Unit,
+    onRemoveFromCart: () -> Unit,
+) {
     Card(
         modifier = modifier
             .width(180.dp)
@@ -58,7 +61,7 @@ fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
                     .height(240.dp)
             ) {
                 AsyncImage(
-                    model = R.drawable.vada_pav,
+                    model = menuItem.imageUrl,
                     contentDescription = "Vada Pav",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -107,7 +110,7 @@ fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
                     .padding(top = 12.dp)
             ) {
                 Text(
-                    text = "Veg loaded pizza",
+                    text = menuItem.name,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
@@ -122,13 +125,13 @@ fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
                 ) {
                     Column {
                         Text(
-                            text = "₹329",
+                            text = "₹${menuItem.discountedPrice}",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary
                         )
                         Text(
-                            text = "₹658",
+                            text = "₹${menuItem.price}",
                             style = MaterialTheme.typography.bodySmall,
                             textDecoration = TextDecoration.LineThrough,
                             color = Color.Gray
@@ -136,16 +139,24 @@ fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
 
                     }
 
-                    Button(
-                        onClick = { },
-                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-                        shape = RoundedCornerShape(8.dp),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-                    ) {
-                        Text(
-                            text = "ADD",
-                            fontWeight = FontWeight.Bold
+                    if (quantity > 0) {
+                        QuantityButton(
+                            quantity = quantity,
+                            onIncrement = onAddToCart,
+                            onDecrement = onRemoveFromCart
                         )
+                    } else {
+                        Button(
+                            onClick = onAddToCart,
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+                            shape = RoundedCornerShape(8.dp),
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+                        ) {
+                            Text(
+                                text = "ADD",
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
                     }
                 }
             }
@@ -154,7 +165,10 @@ fun TriedTastedFoodCard(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
+fun LookingForMoreFoodCard(
+    modifier: Modifier = Modifier, menuItem: MenuItem, quantity: Int, onAddToCart: () -> Unit,
+    onRemoveFromCart: () -> Unit
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -194,7 +208,7 @@ fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
             }
 
             Text(
-                text = "Peri Peri Potato Wedges",
+                text = menuItem.name,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 16.sp,
                 lineHeight = 20.sp,
@@ -202,7 +216,7 @@ fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
             )
 
             Text(
-                text = "Serves 1 | Lamb patty slowly cooked for perfection and served with our special sauce...",
+                text = "${menuItem.servingSize} | ${menuItem.description}",
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.Gray,
                 maxLines = 2,
@@ -214,7 +228,7 @@ fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "₹658",
+                    text = "₹${menuItem.price}",
                     style = MaterialTheme.typography.bodySmall,
                     textDecoration = TextDecoration.LineThrough,
                     color = Color.Gray
@@ -223,7 +237,7 @@ fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = "₹329",
+                    text = "₹${menuItem.discountedPrice}",
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary
@@ -248,35 +262,33 @@ fun LookingForMoreFoodCard(modifier: Modifier = Modifier) {
                 )
             }
 
-            Button(
-                onClick = {},
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .offset(y = 16.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
+            if (quantity > 0) {
+                QuantityButton(
+                    quantity = quantity,
+                    onIncrement = onAddToCart,
+                    onDecrement = onRemoveFromCart,
+                    modifier = Modifier.align(Alignment.BottomCenter)
+                        .offset(y = 10.dp),
                 )
-            ) {
-                Text(
-                    text = "ADD",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
-                )
+            } else {
+                Button(
+                    onClick = onAddToCart,
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .offset(y = 16.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary
+                    )
+                ) {
+                    Text(
+                        text = "ADD",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp
+                    )
+                }
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun FoodCardPreview() {
-    TriedTastedFoodCard()
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun MoreFoodCardPreview() {
-    LookingForMoreFoodCard()
 }
