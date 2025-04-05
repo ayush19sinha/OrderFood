@@ -4,44 +4,24 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import my.android.orderfood.data.repository.MenuRepository
+import my.android.orderfood.navigation.AppNavigation
 import my.android.orderfood.ui.theme.OrderFoodTheme
+import my.android.orderfood.viewmodel.FoodOrderViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            OrderFoodTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            OrderFoodTheme(darkTheme = false, dynamicColor = false) {
+                val repository = MenuRepository(applicationContext)
+                val viewModel: FoodOrderViewModel = viewModel {
+                    FoodOrderViewModel(repository)
                 }
+                AppNavigation(viewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    OrderFoodTheme {
-        Greeting("Android")
     }
 }
